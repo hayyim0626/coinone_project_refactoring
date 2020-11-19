@@ -42,7 +42,7 @@ const Chart = () => {
     }
     setChartList(chartList.sort((large, small) => small.volume - large.volume));
   };
-
+  console.log(chartList)
   const clickBtn = (e) => {
     setNavColor(e.target.id);
     changeList(e.target.id);
