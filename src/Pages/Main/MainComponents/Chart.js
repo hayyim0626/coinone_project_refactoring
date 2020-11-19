@@ -24,12 +24,10 @@ const Chart = () => {
         .then((res) => res.json())
         .then((res) => {
           const data = res.data;
-          chartList[i-1] = {
+          chartList[i - 1] = {
             data: data,
             coinName: data[data.length - 1].Name,
-            present: data[
-              data.length - 1
-            ].closing_price.toLocaleString(),
+            present: data[data.length - 1].closing_price.toLocaleString(),
             upDown:
               ((data[data.length - 100].closing_price -
                 data[data.length - 190].closing_price) /
@@ -42,7 +40,7 @@ const Chart = () => {
     }
     setChartList(chartList.sort((large, small) => small.volume - large.volume));
   };
-  console.log(chartList)
+  
   const clickBtn = (e) => {
     setNavColor(e.target.id);
     changeList(e.target.id);
@@ -50,11 +48,15 @@ const Chart = () => {
 
   const changeList = (id) => {
     if (id === SORT_MAPPER[0]) {
-      setChartList([...chartList].sort((high, low) => high.volume - low.volume));
+      setChartList(
+        [...chartList].sort((high, low) => high.volume - low.volume)
+      );
     }
 
     if (id === SORT_MAPPER[1]) {
-      setChartList([...chartList].sort((high, low) => low.upDown - high.upDown));
+      setChartList(
+        [...chartList].sort((high, low) => low.upDown - high.upDown)
+      );
     }
     if (id === SORT_MAPPER[2]) {
       setChartList([...chartList].sort((a, b) => a.upDown - b.upDown));
